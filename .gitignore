@@ -1,0 +1,4 @@
+video/node_modules/
+video/build/
+__pycache__/
+*.pyc

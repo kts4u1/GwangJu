@@ -1,0 +1,11 @@
+{
+  "name": "gwangju-semiconductor-video",
+  "private": true,
+  "description": "광주 반도체 시민 홍보 영상(3분) 제작 소스",
+  "scripts": {
+    "build": "bash build.sh"
+  },
+  "dependencies": {
+    "pretendard": "1.3.9"
+  }
+}
