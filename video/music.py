@@ -67,7 +67,8 @@ def kicks(a, b, amp=.35):
     return out
 
 
-fx = boom(.6, .9) + boom(sc["mega"]["start"] + .35, .8) + boom(sc["airbase"]["cues"][3]["start"], .5) + boom(sc["end"]["start"] + .3, 1.0)
+c0 = sc["intro"]["cues"][0]["start"]
+fx = boom(c0 - 1.2, .9) + whoosh(c0 - 1.3, 2.6, .10, 21) + whoosh(sc["mega"]["cues"][4]["end"], 3.0, .11, 22) + boom(sc["mega"]["start"] + .35, .8) + boom(sc["airbase"]["cues"][3]["start"], .5) + boom(sc["end"]["start"] + .3, 1.0)
 for i, s in enumerate(tl["scenes"][1:]):
     fx += whoosh(s["start"] + .35, 1.2 if s["id"] in ("mega", "end") else .8, .14 if s["id"] in ("mega", "end") else .07, i)
 drums = kicks(sc["mega"]["start"] + 1.2, sc["mega"]["end"] - .5) + kicks(sc["vision"]["cues"][0]["start"], sc["vision"]["end"] - .3, .3)

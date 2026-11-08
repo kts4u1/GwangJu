@@ -9,6 +9,14 @@ const path = require('path'), fs = require('fs');
 const FPS = 30;
 const BUILD = path.join(__dirname, 'build');
 const timeline = JSON.parse(fs.readFileSync(path.join(BUILD, 'timeline.json'), 'utf8'));
+const readJSON = f => JSON.parse(fs.readFileSync(path.join(__dirname, 'data', f), 'utf8'));
+// 지도 데이터: 시·도 전체 + 광주(24)·전남(36) 시·군·구 + 광주 군공항 윤곽(OSM)
+const muni = readJSON('municipalities.json');
+const geo = {
+  prov: readJSON('provinces.json'),
+  muni: { type: 'FeatureCollection', features: muni.features.filter(f => /^(24|36)/.test(f.properties.code)) },
+  air: readJSON('airbase.json'),
+};
 
 async function openPage(browser) {
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
@@ -16,7 +24,7 @@ async function openPage(browser) {
   page.on('pageerror', e => errors.push(e.message));
   page.on('console', m => m.type() === 'error' && errors.push(m.text()));
   await page.goto('file://' + path.join(__dirname, 'scene.html'));
-  const text = await page.evaluate(tl => window.init(tl), timeline);
+  const text = await page.evaluate(([tl, g]) => window.init(tl, g), [timeline, geo]);
   await page.evaluate(async text => {
     for (const w of [400, 500, 600, 700, 800, 900]) await document.fonts.load(`${w} 40px P`, text);
     await document.fonts.ready;

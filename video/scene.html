@@ -11,13 +11,15 @@
 html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#02050d;font-family:P,sans-serif;color:#fff}
 canvas{position:absolute;left:0;top:0}
 .a{position:absolute;opacity:0;white-space:nowrap;visibility:hidden}
+.pin{left:0;top:0}
 .ctr{left:0;right:0;text-align:center}
 .eb{font-weight:600;font-size:26px;letter-spacing:.38em;color:var(--cy)}
 .h1{font-weight:900;font-size:150px;letter-spacing:-.02em;text-shadow:0 0 40px rgba(120,210,255,.45)}
 .h2{font-weight:800;font-size:64px;letter-spacing:-.01em}
 .gold{background:linear-gradient(90deg,#ffd77a,#fff3c9 50%,#ffc24d);-webkit-background-clip:text;background-clip:text;color:transparent}
-.pill{display:inline-block;padding:10px 28px;border-radius:999px;border:1.5px solid rgba(255,215,122,.8);color:#ffe4a3;font-weight:700;font-size:30px;background:rgba(255,200,90,.08)}
-.card{box-sizing:border-box;border-radius:22px;background:linear-gradient(120deg,rgba(40,90,160,.35),rgba(10,25,55,.6));
+.pill{display:inline-block;padding:10px 28px;border-radius:999px;border:1.5px solid rgba(255,215,122,.8);color:#ffe4a3;font-weight:700;font-size:30px;background:rgba(20,16,4,.55)}
+.pill.cy{border-color:rgba(127,227,255,.75);color:#d6f3ff;background:rgba(4,16,30,.6)}
+.card{box-sizing:border-box;border-radius:22px;background:linear-gradient(120deg,rgba(40,90,160,.42),rgba(10,25,55,.72));
   border:1.5px solid rgba(127,227,255,.45);box-shadow:0 0 40px rgba(60,160,255,.15) inset;padding:28px 38px}
 .num{font-weight:900;font-size:66px;line-height:1}
 .desc{font-weight:500;font-size:27px;color:rgba(220,235,255,.85);margin-top:14px}
@@ -30,6 +32,8 @@ canvas{position:absolute;left:0;top:0}
 <canvas id="c" width="1920" height="1080"></canvas>
 
 <!-- 1. intro -->
+<div id="i_pin" class="a pin"><span class="pill" style="font-size:34px">광주</span></div>
+<div id="i_kr" class="a eb" style="left:120px;top:96px">REPUBLIC OF KOREA</div>
 <div id="i_eb" class="a ctr eb" style="top:330px">GWANGJU · CITY OF LIGHT</div>
 <div id="i_t" class="a ctr h1" style="top:372px">빛고을 광주</div>
 <div id="i_s" class="a ctr" style="top:592px;font-weight:600;font-size:38px;letter-spacing:.3em;color:#ffd77a">민주 · 인권 · 문화의 빛</div>
@@ -48,21 +52,27 @@ canvas{position:absolute;left:0;top:0}
 <div id="p_t" class="a h2" style="left:140px;top:320px;font-size:84px;line-height:1.18">광주, 반도체<br><span class="gold">첨단 패키징</span> 거점</div>
 <div id="p_s" class="a lab" style="left:142px;top:552px;font-size:32px">남부권 반도체 혁신벨트의 핵심 거점</div>
 <div id="p_ai" class="a pill" style="left:140px;top:636px">AI 시대 고성능 반도체의 핵심 기술</div>
+<div id="p_pg" class="a pin"><span class="pill">광주 · <b>첨단 패키징</b></span></div>
+<div id="p_pk" class="a pin"><span class="pill cy" style="font-size:26px">구미 · 소재·부품</span></div>
+<div id="p_pb" class="a pin"><span class="pill cy" style="font-size:26px">부산 · 전력반도체</span></div>
 <div id="p_steps" class="a" style="left:990px;width:700px;text-align:center;top:838px;font-weight:700;font-size:34px;color:#ffe4a3"><span id="p_s1">쌓고</span> · <span id="p_s2">연결해</span> · <span id="p_s3">더 빠르게</span></div>
 
 <!-- 4. mega -->
-<div id="m_eb" class="a eb" style="left:120px;top:96px">2026 · 반도체 메가 프로젝트</div>
+<div id="m_eb" class="a eb" style="left:120px;top:96px">2026.6 · 반도체 메가 프로젝트</div>
 <div id="m_t" class="a h2" style="left:120px;top:134px;font-size:60px">더 큰 기회가 찾아왔습니다</div>
-<div id="m_pin" class="a" style="left:240px;width:600px;text-align:center;top:226px"><span class="pill">광주 군공항 부지</span></div>
-<div id="m_c1" class="a card" style="left:1060px;top:262px;width:740px;height:178px"><div class="num">약 <span id="m_n1" class="gold">0</span>조 원</div><div class="desc">삼성전자 · SK하이닉스 투자 계획</div></div>
-<div id="m_c2" class="a card" style="left:1060px;top:462px;width:740px;height:178px"><div class="num"><span class="gold">4</span>곳</div><div class="desc">첨단 반도체 공장(팹) 계획</div></div>
-<div id="m_c3" class="a card" style="left:1060px;top:662px;width:740px;height:178px"><div class="num">약 <span id="m_n3" class="gold">0</span>만㎡</div><div class="desc">국가 반도체 산업단지 후보지 · 축구장 1,100개 이상</div></div>
-<div id="m_inf" class="a" style="left:130px;top:806px;font-weight:700;font-size:30px;color:#dbeeff">
+<div id="m_c1" class="a card" style="left:1060px;top:262px;width:740px;height:178px"><div class="num">약 <span class="gold">800</span>조 원</div><div class="desc">삼성전자 · SK하이닉스 투자 (2026.6.29 발표)</div></div>
+<div id="m_c2" class="a card" style="left:1060px;top:462px;width:740px;height:178px"><div class="num"><span class="gold">4</span>기</div><div class="desc">차세대 메모리 반도체 공장(팹)</div></div>
+<div id="m_c3" class="a card" style="left:1060px;top:662px;width:740px;height:178px"><div class="num" style="font-size:60px"><span class="gold">광주·전남</span></div><div class="desc">수도권에 이은 제2의 반도체 생산거점</div></div>
+<div id="m_air" class="a pin"><span class="pill">광주 군공항 (제1전투비행단)</span></div>
+<div id="m_area" class="a card" style="left:1190px;top:300px;width:640px;height:196px"><div class="num">약 <span class="gold">250만</span> 평</div><div id="m_area2" class="desc" style="font-size:32px;font-weight:700;color:#e6f4ff">= 약 826만㎡ · 군공항 부지 일원</div></div>
+<div id="m_badge" class="a card" style="left:1190px;top:522px;width:640px;height:170px;border-color:rgba(255,215,122,.7)"><div style="font-weight:800;font-size:38px;line-height:1.25">호남권 반도체 첨단<br>국가산업단지 <span class="gold">후보지</span></div><div class="desc" style="font-size:24px;margin-top:8px">2026.7.29 국토교통부 지정</div></div>
+<div id="m_inf" class="a" style="left:120px;top:826px;font-weight:700;font-size:30px;color:#dbeeff">
   <svg class="ico" width="30" height="34" viewBox="0 0 30 34"><path d="M18 1L3 20h10l-2 13L27 13H16z" fill="#ffd77a"/></svg>전력 ·
   <svg class="ico" width="26" height="34" viewBox="0 0 26 34" style="margin-left:8px"><path d="M13 2C8 10 3 16 3 22a10 10 0 0020 0c0-6-5-12-10-20z" fill="#7fc8ff"/></svg>용수 — 기반 시설 국가 책임 지원</div>
 
 <!-- 5. airbase -->
 <div id="a_year" class="a ctr h1" style="top:104px">1964</div>
+<div id="a_year2" class="a ctr h1" style="top:104px">2026</div>
 <div id="a_l1" class="a ctr lab" style="top:296px;font-size:36px">공군 비행장이 들어선 해</div>
 <div id="a_l2" class="a ctr" style="top:296px;font-size:42px;font-weight:700;color:#ffd77a">그리고 62년</div>
 <div id="a_eb" class="a ctr eb" style="top:130px">AIRBASE → SEMICONDUCTOR</div>
@@ -72,10 +82,10 @@ canvas{position:absolute;left:0;top:0}
 <div id="t_eb" class="a ctr eb" style="top:96px">TALENT</div>
 <div id="t_t" class="a ctr h2" style="top:134px;font-size:70px">미래를 만드는 것은, <span class="gold">사람</span></div>
 <div id="t_card" class="a card" style="left:140px;top:290px;width:780px;height:226px"><div style="font-weight:800;font-size:58px">GIST-Arm 스쿨</div><div class="desc">광주과학기술원 × Arm · 2026년 9월 개교</div><div class="desc" style="margin-top:6px">반도체 설계 전문 인재 교육</div></div>
-<div id="t_cnt" class="a" style="left:140px;top:548px;font-weight:900;font-size:130px;line-height:1"><span id="t_n" class="gold">0</span><span style="font-size:68px;margin-left:6px">명</span></div>
-<div id="t_cl" class="a lab" style="left:146px;top:704px;font-size:32px">5년간 반도체 설계 인재 양성 목표</div>
+<div id="t_cnt" class="a" style="left:140px;top:548px;font-weight:900;font-size:130px;line-height:1"><span class="gold">1,400</span><span style="font-size:68px;margin-left:6px">명</span></div>
+<div id="t_cl" class="a lab" style="left:146px;top:700px;font-size:29px;line-height:1.45">2030년까지 5년간 양성 목표<br><span style="color:#ffe4a3">석·박사 400명 + 재직자·취업준비생 1,000명</span></div>
 <div id="t_unit" class="a" style="left:1000px;top:690px;font-size:22px;font-weight:500;color:rgba(220,235,255,.65)">사람 아이콘 1개 = 10명</div>
-<div id="t_unis" class="a ctr" style="top:790px"><span id="t_u1" class="pill">전남대학교</span>&nbsp;&nbsp;&nbsp;<span id="t_u2" class="pill">조선대학교</span>&nbsp;&nbsp;&nbsp;<span id="t_u3" class="pill">지역 대학들</span></div>
+<div id="t_unis" class="a ctr" style="top:800px"><span id="t_u1" class="pill">전남대학교</span>&nbsp;&nbsp;&nbsp;<span id="t_u2" class="pill">조선대학교</span>&nbsp;&nbsp;&nbsp;<span id="t_u3" class="pill">지역 대학들</span></div>
 
 <!-- 7. aicity -->
 <div id="c_eb" class="a ctr eb" style="top:96px">AI × SEMICONDUCTOR</div>
@@ -83,10 +93,13 @@ canvas{position:absolute;left:0;top:0}
 <div id="c_pill" class="a ctr" style="top:238px"><span class="pill">AI × 반도체 → 새로운 산업</span></div>
 <div id="c_ln" class="a lab" style="left:290px;width:420px;text-align:center;top:790px">국가 AI 데이터센터</div>
 <div id="c_lc" class="a lab" style="left:1200px;width:400px;text-align:center;top:790px">반도체</div>
-<div id="c_pop" class="a ctr lab" style="top:376px;font-size:34px">인구</div>
-<div id="c_big" class="a ctr" style="top:420px;font-weight:900;font-size:124px;line-height:1"><span id="c_n" class="gold">0</span>만</div>
-<div id="c_l1" class="a ctr" style="top:748px;font-weight:800;font-size:48px">2026년 7월, 전남광주통합특별시 출범</div>
-<div id="c_l2" class="a ctr lab" style="top:822px;font-size:30px">광주 5개 구와 전남 22개 시·군이 하나로</div>
+<div id="c_mgj" class="a pin"><span class="pill" style="font-size:26px">광주 5개 구</span></div>
+<div id="c_mjn" class="a pin"><span class="pill cy" style="font-size:26px">전남 22개 시·군</span></div>
+<div id="c_pop" class="a lab" style="left:1250px;top:262px;font-size:32px">인구</div>
+<div id="c_big" class="a" style="left:1244px;top:304px;font-weight:900;font-size:124px;line-height:1">약 <span class="gold">320</span>만</div>
+<div id="c_l0" class="a lab" style="left:1250px;top:500px;font-size:30px;color:#ffe4a3">2026년 7월 1일 출범</div>
+<div id="c_l1" class="a" style="left:1246px;top:542px;font-weight:800;font-size:58px">전남광주통합특별시</div>
+<div id="c_l2" class="a lab" style="left:1250px;top:634px;font-size:28px;line-height:1.5">광주 5개 구 + 전남 22개 시·군<br>= 27개 시·군·구가 하나로</div>
 
 <!-- 8. vision -->
 <div id="v_t" class="a ctr h2" style="top:146px;font-size:86px">반도체가 여는 <span class="gold">광주의 내일</span></div>
@@ -96,8 +109,9 @@ canvas{position:absolute;left:0;top:0}
 <!-- 9. end -->
 <div id="e_t1" class="a ctr" style="top:490px;font-weight:700;font-size:60px">빛고을 광주,</div>
 <div id="e_t2" class="a ctr" style="top:570px;font-weight:900;font-size:116px;line-height:1.1;filter:drop-shadow(0 0 28px rgba(255,200,100,.45))"><span class="gold">반도체로 다시 빛나다</span></div>
-<div id="e_src" class="a ctr" style="top:1004px;font-size:22px;font-weight:500;color:rgba(255,255,255,.55)">자료: 정부 발표 및 언론 보도 종합(2025.12~2026.9) · 일부 수치와 일정은 계획 단계로, 바뀔 수 있습니다</div>
+<div id="e_src" class="a ctr" style="top:1000px;font-size:20px;font-weight:500;color:rgba(255,255,255,.55)">자료: 정부 발표·언론 보도 종합(2025.12~2026.9) · 지도: 통계청 행정구역 경계, © OpenStreetMap contributors · 일부 내용은 계획 단계로 바뀔 수 있습니다</div>
 
+<div id="mapsrc" class="a" style="right:26px;bottom:14px;font-size:17px;font-weight:500;color:rgba(255,255,255,.5)">지도: 통계청 행정구역 경계(2013) · © OpenStreetMap contributors</div>
 <div id="cap" class="a cap"><b id="capt"></b></div>
 
 <script>
@@ -108,18 +122,64 @@ const eio=x=>{x=clamp(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
 const eback=x=>{x=clamp(x);const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
 const ramp=(t,a,d=.6)=>eo((t-a)/d);
 const win=(t,a,b,f=.4)=>clamp((t-a)/f)*clamp((b-t)/f);
-const fmt=n=>Math.round(n).toLocaleString('en-US');
 function rng(s){return()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 const $={};const el=id=>$[id]||($[id]=document.getElementById(id));
 function show(id,o,dx=0,dy=0,sc=1){const e=el(id),v=clamp(o);
   e.style.opacity=v;e.style.visibility=v>.002?'visible':'hidden';
   e.style.transform=(dx||dy||sc!==1)?`translate(${dx}px,${dy}px) scale(${sc})`:'none'}
+function pin(id,x,y,o,sc=1){const e=el(id),v=clamp(o);e.style.opacity=v;e.style.visibility=v>.002?'visible':'hidden';
+  e.style.transform=`translate(${x}px,${y}px) translate(-50%,-100%) scale(${sc})`;e.style.transformOrigin='50% 100%'}
 function sub(id,o,dy=0,sc=1){const e=el(id);e.style.opacity=clamp(o);e.style.transform=`translateY(${dy}px) scale(${sc})`}
-function txt(id,s){const e=el(id);if(e.textContent!==s)e.textContent=s}
 function glow(x,y,r,col,a){if(a<=0)return;const g=ctx.createRadialGradient(x,y,0,x,y,r*4);
   g.addColorStop(0,`rgba(${col},${a})`);g.addColorStop(.25,`rgba(${col},${a*.5})`);g.addColorStop(1,`rgba(${col},0)`);
   ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,r*4,0,7);ctx.fill()}
 function poly(p){ctx.beginPath();ctx.moveTo(p[0][0],p[0][1]);for(let i=1;i<p.length;i++)ctx.lineTo(p[i][0],p[i][1]);ctx.closePath()}
+const pop=(t,a)=>{const k=eback((t-a)/.45);return[clamp((t-a)/.25),k]};   // 숫자 등장: [불투명도, 크기]
+
+// ---------- map engine ----------
+// 지도 좌표: 경도·위도를 km 단위 평면으로 (기준 127.5E, 35.5N)
+const LON0=127.5,LAT0=35.5,KX=111.32*Math.cos(LAT0*Math.PI/180),KY=110.95;
+const wx=lo=>(lo-LON0)*KX,wy=la=>-(la-LAT0)*KY;
+let GEO=null;
+function rings(g){return g.type==='Polygon'?[g.coordinates]:g.coordinates}
+function mkPath(g){const p=new Path2D();for(const pl of rings(g))for(const r of pl){r.forEach(([lo,la],i)=>i?p.lineTo(wx(lo),wy(la)):p.moveTo(wx(lo),wy(la)));p.closePath()}return p}
+function centroid(g){let A=0,X=0,Y=0;for(const pl of rings(g)){const r=pl[0].map(([lo,la])=>[wx(lo),wy(la)]);
+  for(let i=0;i<r.length;i++){const[x1,y1]=r[i],[x2,y2]=r[(i+1)%r.length],c=x1*y2-x2*y1;A+=c;X+=(x1+x2)*c;Y+=(y1+y2)*c}}return[X/(3*A),Y/(3*A)]}
+function prepGeo(g){
+  const f=x=>({code:x.properties.code,name:x.properties.name,path:mkPath(x.geometry),c:centroid(x.geometry)});
+  const prov=g.prov.features.map(f),muni=g.muni.features.map(f),ag=g.air.geometry;
+  GEO={prov,muni,gj:muni.filter(m=>m.code.startsWith('24')),jn:muni.filter(m=>m.code.startsWith('36')),
+    air:{path:mkPath(ag),c:centroid(ag),ring:ag.coordinates[0].map(([lo,la])=>[wx(lo),wy(la)])}};
+  GEO.G=prov.find(p=>p.code==='24').c;GEO.gjP=prov.find(p=>p.code==='24');GEO.jnP=prov.find(p=>p.code==='36');
+  GEO.jn.forEach(m=>m.d=Math.hypot(m.c[0]-GEO.G[0],m.c[1]-GEO.G[1]));const md=Math.max(...GEO.jn.map(m=>m.d));GEO.jn.forEach(m=>m.dn=m.d/md);
+  const ys=GEO.air.ring.map(p=>p[1]);GEO.air.top=[GEO.air.c[0],Math.min(...ys)];
+}
+const cam=(lo,la,z,sx=960,sy=540)=>({x:wx(lo),y:wy(la),z,sx,sy});
+const camW=(p,z,sx=960,sy=540)=>({x:p[0],y:p[1],z,sx,sy});
+function lerpCam(a,b,u){u=clamp(u);const z=Math.exp(Math.log(a.z)+(Math.log(b.z)-Math.log(a.z))*u),
+  w=Math.abs(a.z-b.z)<1e-6?u:(1/a.z-1/z)/(1/a.z-1/b.z);return{x:a.x+(b.x-a.x)*w,y:a.y+(b.y-a.y)*w,z,sx:a.sx+(b.sx-a.sx)*u,sy:a.sy+(b.sy-a.sy)*u}}
+const scr=(c,p)=>[c.sx+(p[0]-c.x)*c.z,c.sy+(p[1]-c.y)*c.z];
+const scrLL=(c,lo,la)=>scr(c,[wx(lo),wy(la)]);
+function camAt(c){ctx.setTransform(c.z,0,0,c.z,c.sx-c.x*c.z,c.sy-c.y*c.z)}
+function grid(c,a){ctx.setTransform(1,0,0,1,0,0);ctx.lineWidth=1;
+  for(const L of[100,20,5,1]){const px=L*c.z,al=a*clamp((px-28)/60)*clamp((700-px)/300)*.12;if(al<=.003)continue;
+    ctx.strokeStyle=`rgba(127,200,255,${al})`;ctx.beginPath();
+    const x0=c.x-c.sx/c.z,x1=c.x+(W-c.sx)/c.z,y0=c.y-c.sy/c.z,y1=c.y+(H-c.sy)/c.z;
+    for(let g=Math.ceil(x0/L)*L;g<=x1;g+=L){const s=c.sx+(g-c.x)*c.z;ctx.moveTo(s,0);ctx.lineTo(s,H)}
+    for(let g=Math.ceil(y0/L)*L;g<=y1;g+=L){const s=c.sy+(g-c.y)*c.z;ctx.moveTo(0,s);ctx.lineTo(W,s)}ctx.stroke()}}
+function land(c,a=1){camAt(c);const lw=1/c.z;
+  ctx.globalCompositeOperation='lighter';ctx.strokeStyle=`rgba(70,160,255,${.25*a})`;ctx.lineWidth=8*lw;for(const p of GEO.prov)ctx.stroke(p.path);
+  ctx.globalCompositeOperation='source-over';ctx.fillStyle=`rgba(13,30,62,${.96*a})`;for(const p of GEO.prov)ctx.fill(p.path,'evenodd');
+  ctx.strokeStyle=`rgba(127,227,255,${.3*a})`;ctx.lineWidth=1.2*lw;for(const p of GEO.prov)ctx.stroke(p.path)}
+function borders(c,list,a,col='127,227,255',px=1){if(a<=0)return;camAt(c);ctx.strokeStyle=`rgba(${col},${a})`;ctx.lineWidth=px/c.z;for(const m of list)ctx.stroke(m.path)}
+function region(c,list,k,col='255,200,100',fa=.10){if(k<=0)return;camAt(c);const lw=1/c.z;
+  ctx.globalCompositeOperation='lighter';ctx.strokeStyle=`rgba(${col},${.22*k})`;ctx.lineWidth=16*lw;for(const m of list)ctx.stroke(m.path);
+  ctx.strokeStyle=`rgba(${col},${.35*k})`;ctx.lineWidth=6*lw;for(const m of list)ctx.stroke(m.path);
+  ctx.fillStyle=`rgba(${col},${fa*k})`;for(const m of list)ctx.fill(m.path,'evenodd');ctx.globalCompositeOperation='source-over';
+  ctx.strokeStyle=`rgba(${col},${.95*k})`;ctx.lineWidth=2.2*lw;for(const m of list)ctx.stroke(m.path)}
+function mapLabel(c,p,text,a,size=22){if(a<=0)return;ctx.setTransform(1,0,0,1,0,0);const[x,y]=scr(c,p);
+  ctx.font=`600 ${size}px P`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle=`rgba(225,240,255,${a})`;ctx.fillText(text,x,y)}
+let mapVis=0;
 
 // ---------- circuit traces ----------
 function trace(x,y,base,r,scale=1){
@@ -137,14 +197,14 @@ function drawTrace(tr,d,a=1,w=2){if(d<=0)return;d=Math.min(d,tr.len);ctx.beginPa
   if(d>=tr.len){const[x,y]=tr.pts[tr.pts.length-1];ctx.beginPath();ctx.arc(x,y,5,0,7);ctx.fillStyle=tr.gold?`rgba(255,215,130,${.9*a})`:`rgba(140,225,255,${.9*a})`;ctx.fill()}}
 function pulse(tr,t,d,r=3,a=.9){if(d<=0)return;const pd=(t*tr.pspeed+tr.pulse*tr.len)%(tr.len+300);
   if(pd<Math.min(d,tr.len)){const[x,y]=pointAt(tr,pd);glow(x,y,r,tr.gold?'255,210,120':'130,220,255',a)}}
+function VP(){return{x:960,y:450}}
 const T1=radial(64,7,960,540,70);
 const TA=(()=>{const r=rng(31),o=[];for(let k=0;k<26;k++){const u=.12+.88*(k%13)/12,side=k<13?-1:1;
   const y=VP().y+(H-VP().y)*u,half=6+514*u;o.push(trace(960+side*half,y,side<0?4:0,r,.35+.9*u))}return o})();
-function VP(){return{x:960,y:450}}
 
 // ---------- shared drawings ----------
 const dots=(()=>{const r=rng(3),a=[];for(let i=0;i<150;i++)a.push([r()*W,r()*H,r()*1.6+.4,r()*6.28,r()*.4+.1]);return a})();
-function bg(t){ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.fillStyle='#02050d';ctx.fillRect(0,0,W,H);
+function bg(t){ctx.setTransform(1,0,0,1,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.fillStyle='#02050d';ctx.fillRect(0,0,W,H);
   const g=ctx.createRadialGradient(960,540,0,960,540,1150);g.addColorStop(0,'#0a1a38');g.addColorStop(1,'#02050d');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
   for(const[x,y,s,p,a]of dots){ctx.fillStyle=`rgba(140,200,255,${a*(.6+.4*Math.sin(t*1.3+p))})`;ctx.fillRect(x,(y+t*6)%H,s,s)}}
 function drawChip(cx,cy,S,t,onT,alpha){
@@ -171,26 +231,41 @@ function drawCity(t,rise,lit,beams=1){
     if(b.beam&&beams>0){const bh=ctx.createLinearGradient(0,top-700,0,top),a=(.16+.12*Math.sin(t*2+b.ph*6))*rise*beams;
       bh.addColorStop(0,'rgba(120,210,255,0)');bh.addColorStop(1,`rgba(150,225,255,${a})`);ctx.globalCompositeOperation='lighter';ctx.fillStyle=bh;ctx.fillRect(b.x+b.w*.3,top-700,b.w*.4,700);ctx.globalCompositeOperation='source-over'}
     ctx.fillStyle='#050b1a';ctx.fillRect(b.x,top,b.w,h+2);ctx.fillStyle='rgba(255,215,130,.6)';
-    for(let wy=top+16;wy<H-10;wy+=22)for(let wx=b.x+8;wx<b.x+b.w-8;wx+=16)if(hash(wx+b.seed,wy)<lit*.5)ctx.fillRect(wx,wy,5,8)}}
+    for(let wy2=top+16;wy2<H-10;wy2+=22)for(let wx2=b.x+8;wx2<b.x+b.w-8;wx2+=16)if(hash(wx2+b.seed,wy2)<lit*.5)ctx.fillRect(wx2,wy2,5,8)}}
+const wt=(s,ci,subs)=>{const c=s.cues[ci],w=c.words.find(w=>w.w.includes(subs));return w?w.t:c.start};
 
-// ---------- scenes ----------
-function sIntro(t,A,s){const c=i=>s.cues[i].start;
-  if(A>0){ctx.save();ctx.globalAlpha=A;const z=1+t*.006;ctx.translate(960,540);ctx.scale(z,z);ctx.translate(-960,-540);
+// ---------- 1. intro: 대한민국 → 광주 확대 ----------
+function sIntro(t,A,s){const c=i=>s.cues[i].start,c0=c(0);
+  const mA=A*clamp(t/.8)*(1-ramp(t,c0-1.4,1.1));
+  if(mA>0){ctx.save();ctx.globalAlpha=mA;
+    const K=cam(127.75,35.95,1.42),G1=camW(GEO.G,30),G2=camW(GEO.G,95);
+    const u1=eio((t-1.9)/2.9),u2=eio((t-(c0-1.6))/1.6),C=u2>0?lerpCam(G1,G2,u2):lerpCam(K,G1,u1);
+    grid(C,1);land(C);
+    const kh=ramp(t,.9,.8);region(C,[GEO.gjP],kh);borders(C,GEO.gj,.55*ramp(t,3.3,.8),'255,220,150',1.4);
+    ctx.setTransform(1,0,0,1,0,0);
+    const ga=ramp(t,3.9,.6)*(1-ramp(t,c0-1.0,.6));for(const m of GEO.gj)mapLabel(C,m.c,m.name,.9*ga,24);
+    const[gx,gy]=scr(C,GEO.G);ctx.globalCompositeOperation='lighter';glow(gx,gy,8+10*ramp(t,1,1)+16*ramp(t,c0-1.8,1.4),'255,225,160',.9*kh);ctx.globalCompositeOperation='source-over';
+    pin('i_pin',gx,gy-26,mA*ramp(t,1.2,.5)*(1-ramp(t,3.4,.5)),.9+.1*ramp(t,1.2,.5));
+    ctx.restore();mapVis=Math.max(mapVis,mA)}else pin('i_pin',0,0,0);
+  show('i_kr',A*ramp(t,.4,.8)*(1-ramp(t,2.6,.6)));
+  const st=c0-1.3;
+  if(A>0&&t>st-.2){ctx.save();ctx.globalAlpha=A*ramp(t,st-.2,.8);const z=1+(t-st)*.006;ctx.translate(960,540);ctx.scale(z,z);ctx.translate(-960,-540);
     ctx.globalCompositeOperation='lighter';
-    for(const tr of T1){const d=(t-.8-tr.delay)*tr.speed;drawTrace(tr,d);pulse(tr,t,d)}
-    const k=eo(t/1.6),br=1+.06*Math.sin(t*2.4),f=t>c(4)?Math.exp(-(t-c(4))*1.2):0;
+    for(const tr of T1){const d=(t-st-tr.delay)*tr.speed;drawTrace(tr,d);pulse(tr,t,d)}
+    const k=eo((t-st+.4)/1.4),br=1+.06*Math.sin(t*2.4),f=t>c(4)?Math.exp(-(t-c(4))*1.2):0;
     glow(960,540,(14+40*k)*br*(1+f*.8),'190,235,255',.95*k);glow(960,540,70*k*br*(1+f),'80,160,255',.35*k+.3*f);
     if(t>c(4)){const q=(t-c(4));ctx.strokeStyle=`rgba(255,220,150,${.6*Math.max(0,1-q/1.4)})`;ctx.lineWidth=4;ctx.beginPath();ctx.arc(960,540,q*900,0,7);ctx.stroke()}
     ctx.restore();
-    const ba=A*.7*ramp(t,2.4,1),band=ctx.createLinearGradient(0,290,0,730);band.addColorStop(0,'rgba(2,5,13,0)');band.addColorStop(.5,`rgba(2,5,13,${ba})`);band.addColorStop(1,'rgba(2,5,13,0)');
+    const ba=A*.7*ramp(t,c0-.6,1),band=ctx.createLinearGradient(0,290,0,730);band.addColorStop(0,'rgba(2,5,13,0)');band.addColorStop(.5,`rgba(2,5,13,${ba})`);band.addColorStop(1,'rgba(2,5,13,0)');
     ctx.fillStyle=band;ctx.fillRect(0,290,W,440)}
   const out=1-ramp(t,c(3)-.5,.5);
-  show('i_eb',A*ramp(t,c(0)-.6,.8)*out,0,(1-ramp(t,c(0)-.6,.8))*20);
-  const kt=ramp(t,c(0),1);show('i_t',A*kt*out,0,(1-kt)*40,.96+.04*kt);
+  show('i_eb',A*ramp(t,c0-.6,.8)*out,0,(1-ramp(t,c0-.6,.8))*20);
+  const kt=ramp(t,c0,1);show('i_t',A*kt*out,0,(1-kt)*40,.96+.04*kt);
   show('i_s',A*ramp(t,c(2),.8)*out,0,(1-ramp(t,c(2),.8))*24);
   show('i_b1',A*ramp(t,c(3)+.1,.8),0,(1-ramp(t,c(3)+.1,.8))*24);
-  const kb=ramp(t,c(4)-.05,.7);show('i_b2',A*kb,0,0,1.18-.18*kb)}
+  const kb=ramp(t,wt(s,4,'반도체')-.05,.7);show('i_b2',A*kb,0,0,1.18-.18*kb)}
 
+// ---------- 2. life ----------
 const NODES=[{x:500,y:520,k:'phone'},{x:1420,y:520,k:'car'},{x:960,y:215,k:'ai'}];
 function drawNode(n,k,a){ctx.save();ctx.translate(n.x,n.y);ctx.scale(k,k);ctx.globalAlpha*=clamp(a);
   glow(0,0,30,'80,160,255',.35);ctx.fillStyle='rgba(20,50,100,.6)';ctx.strokeStyle='rgba(127,227,255,.9)';ctx.lineWidth=2.5;ctx.beginPath();ctx.arc(0,0,86,0,7);ctx.fill();ctx.stroke();
@@ -202,29 +277,51 @@ function drawNode(n,k,a){ctx.save();ctx.translate(n.x,n.y);ctx.scale(k,k);ctx.gl
     ctx.fillStyle='rgba(255,215,122,.85)';ctx.beginPath();ctx.arc(46,4,4,0,7);ctx.fill()}
   if(n.k==='ai'){ctx.fillStyle='#ffe4a3';ctx.font='800 54px P';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('AI',0,3)}
   ctx.restore()}
-function sLife(t,A,s){const c=i=>s.cues[i].start,ap=[c(0)+.1,c(0)+1.9,c(1)+.1];
+function sLife(t,A,s){const c=i=>s.cues[i].start,ap=[wt(s,0,'스마트폰'),wt(s,0,'자동차'),wt(s,1,'인공지능')];
   if(A>0){ctx.save();ctx.globalAlpha=A;
     NODES.forEach((n,i)=>{const p=eio((t-c(2)-i*.15)/.9);if(p<=0)return;const dx=960-n.x,dy=520-n.y,L=Math.hypot(dx,dy),ux=dx/L,uy=dy/L,
       sx=n.x+ux*92,sy=n.y+uy*92,ex=960-ux*150,ey=520-uy*150;
       ctx.strokeStyle='rgba(255,210,120,.75)';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(sx+(ex-sx)*p,sy+(ey-sy)*p);ctx.stroke();
       if(p>=1){ctx.globalCompositeOperation='lighter';for(let q=0;q<2;q++){const u=(t*.7+i*.31+q*.5)%1;glow(ex+(sx-ex)*u,ey+(sy-ey)*u,3.5,'255,220,150',.9)}ctx.globalCompositeOperation='source-over'}});
-    const kc=ramp(t,c(3),.7);if(kc<1)glow(960,520,40,'120,200,255',.25*(1-kc));
-    if(kc>0)drawChip(960,520,230*(.85+.15*eback((t-c(3))/.7)+.06*ramp(t,c(4),1)),t,c(3),kc);
-    if(t>c(3))glow(960,520,90,'255,230,170',.8*Math.max(0,1-(t-c(3))/.9));
+    const tc=wt(s,3,'반도체'),kc=ramp(t,tc-.2,.7);if(kc<1)glow(960,520,40,'120,200,255',.25*(1-kc));
+    if(kc>0)drawChip(960,520,230*(.85+.15*eback((t-tc+.2)/.7)+.06*ramp(t,c(4),1)),t,tc,kc);
+    if(t>tc)glow(960,520,90,'255,230,170',.8*Math.max(0,1-(t-tc)/.9));
     NODES.forEach((n,i)=>{const k=eback((t-ap[i])/.6);if(k>0)drawNode(n,k,k)});ctx.restore()}
   show('l_eb',A*ramp(t,s.start+.4,.8));
   show('l_phone',A*ramp(t,ap[0]+.25,.5));show('l_car',A*ramp(t,ap[1]+.25,.5));show('l_ai',A*ramp(t,ap[2]+.25,.5));
   const kl=ramp(t,c(4),.8);show('l_core',A*kl,0,(1-kl)*24)}
 
+// ---------- 3. packaging: 남부권 반도체 혁신벨트 지도 → 적층 패키징 ----------
 const PO={cx:1340,cy:592,s:110};
-function sPack(t,A,s){const c=i=>s.cues[i].start;
-  if(A>0){ctx.save();ctx.globalAlpha=A;glow(1340,690,130,'60,140,255',.22);
+const BELT={gj:[126.853,35.160],gm:[128.344,36.119],bs:[129.075,35.180]};
+function sPack(t,A,s){const c=i=>s.cues[i].start,tg=wt(s,0,'광주'),tp=wt(s,1,'패키징'),tb=tp+.8;
+  const mA=A*ramp(t,s.start-.3,.8)*(1-ramp(t,c(2)+.3,.7)),sA=A*ramp(t,c(2)+.4,.6);
+  if(mA>0){ctx.save();ctx.globalAlpha=mA;
+    const C=lerpCam(cam(127.95,35.62,2.8,1330,560),cam(127.95,35.62,3.3,1330,560),(t-s.start)/9);
+    grid(C,1);land(C);region(C,[GEO.gjP],ramp(t,tg,.6));
+    ctx.setTransform(1,0,0,1,0,0);
+    const P=Object.fromEntries(Object.entries(BELT).map(([k,v])=>[k,scrLL(C,v[0],v[1])]));
+    const kb=eio((t-tb)/1.0);
+    if(kb>0){ctx.globalCompositeOperation='lighter';
+      for(const[a,b]of[['gj','gm'],['gj','bs'],['gm','bs']]){const[x0,y0]=P[a],[x1,y1]=P[b],mx=(x0+x1)/2,my=(y0+y1)/2-60;
+        ctx.beginPath();ctx.moveTo(x0,y0);for(let u=0;u<=kb;u+=.02){const v=1-u;ctx.lineTo(v*v*x0+2*v*u*mx+u*u*x1,v*v*y0+2*v*u*my+u*u*y1)}
+        ctx.strokeStyle='rgba(255,210,120,.7)';ctx.lineWidth=3;ctx.setLineDash([12,10]);ctx.lineDashOffset=-t*40;ctx.stroke();ctx.setLineDash([])}
+      ctx.globalCompositeOperation='source-over'}
+    ctx.globalCompositeOperation='lighter';
+    glow(...P.gj,10,'255,215,140',ramp(t,tg,.5));glow(...P.gm,7,'130,220,255',.9*ramp(t,tb,.5));glow(...P.bs,7,'130,220,255',.9*ramp(t,tb+.2,.5));
+    ctx.globalCompositeOperation='source-over';
+    const lg=ctx.createLinearGradient(0,0,1000,0);lg.addColorStop(0,'rgba(2,5,13,.88)');lg.addColorStop(.75,'rgba(2,5,13,.55)');lg.addColorStop(1,'rgba(2,5,13,0)');ctx.fillStyle=lg;ctx.fillRect(0,0,1000,H);
+    ctx.restore();mapVis=Math.max(mapVis,mA);
+    const[o1,k1]=pop(t,tp-.15);pin('p_pg',P.gj[0],P.gj[1]-22,mA*o1,.85+.15*k1);
+    pin('p_pk',P.gm[0],P.gm[1]-18,mA*ramp(t,tb,.5));pin('p_pb',P.bs[0],P.bs[1]-18,mA*ramp(t,tb+.2,.5))}
+  else{pin('p_pg',0,0,0);pin('p_pk',0,0,0);pin('p_pb',0,0,0)}
+  if(sA>0){ctx.save();ctx.globalAlpha=sA;glow(1340,690,130,'60,140,255',.22);
     isoBox(PO,0,0,0,3.6,3.6,.25,{top:'#0f4a3a',left:'#0a3328',right:'#0c3d30',stroke:'rgba(120,255,200,.35)'});
     ctx.fillStyle='rgba(255,215,130,.7)';for(let i=0;i<14;i++){const v=-1.6+i*3.2/13;for(const[x,y]of[[v,-1.62],[v,1.62],[-1.62,v],[1.62,v]]){const[px,py]=isoP(PO,x,y,.25);ctx.fillRect(px-2,py-1,4,2)}}
-    const lit=ramp(t,c(3),.6);
-    for(let i=0;i<4;i++){const z0=.31+i*.3,st=i===0?s.start:c(2)+(i-1)*.5,k=i===0?1:eo((t-st)/.55);if(k<=0)continue;
-      ctx.globalAlpha=A*clamp(k*1.6);isoBox(PO,0,0,z0+(1-k)*3,2.4,2.4,.2,{top:`rgba(${30+50*lit},${62+70*lit},${125+60*lit},.8)`,left:'rgba(14,30,66,.85)',right:'rgba(20,42,88,.85)',stroke:'rgba(127,227,255,.8)'})}
-    ctx.globalAlpha=A;const kt=eio((t-(c(2)+1.9))/.9);
+    const lit=ramp(t,c(3),.6),ts=wt(s,2,'쌓고')-.35,tc=wt(s,2,'연결해')+.1;
+    for(let i=0;i<4;i++){const z0=.31+i*.3,k=i===0?1:eo((t-ts-(i-1)*.32)/.5);if(k<=0)continue;
+      ctx.globalAlpha=sA*clamp(k*1.6);isoBox(PO,0,0,z0+(1-k)*3,2.4,2.4,.2,{top:`rgba(${30+50*lit},${62+70*lit},${125+60*lit},.8)`,left:'rgba(14,30,66,.85)',right:'rgba(20,42,88,.85)',stroke:'rgba(127,227,255,.8)'})}
+    ctx.globalAlpha=sA;const kt=eio((t-tc)/.9);
     if(kt>0){ctx.globalCompositeOperation='lighter';const zb=.25,zt=.31+3*.3+.2;
       for(const gx of[-.7,0,.7])for(const gy of[-.7,0,.7]){const[x0,y0]=isoP(PO,gx,gy,zb),[x1,y1]=isoP(PO,gx,gy,zb+(zt-zb)*kt);
         ctx.strokeStyle='rgba(255,210,120,.85)';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(x1,y1);ctx.stroke();
@@ -233,40 +330,57 @@ function sPack(t,A,s){const c=i=>s.cues[i].start;
     ctx.restore()}
   const kb=ramp(t,c(0)-.4,.6);show('p_badge',A*kb,(1-kb)*-20);
   const kt2=ramp(t,c(0)+.2,.8);show('p_t',A*kt2,(1-kt2)*-30);
-  show('p_s',A*ramp(t,c(1)+.6,.8));const ka=ramp(t,c(4),.7);show('p_ai',A*ka,0,(1-ka)*16);
-  show('p_steps',A*ramp(t,c(2),.5));sub('p_s1',.3+.7*ramp(t,c(2),.4));sub('p_s2',.3+.7*ramp(t,c(2)+1.9,.4));sub('p_s3',.3+.7*ramp(t,c(3),.4))}
+  show('p_s',A*ramp(t,tb,.8));const ka=ramp(t,c(4),.7);show('p_ai',A*ka,0,(1-ka)*16);
+  show('p_steps',sA*ramp(t,wt(s,2,'쌓고')-.2,.5));sub('p_s1',.3+.7*ramp(t,wt(s,2,'쌓고'),.4));sub('p_s2',.3+.7*ramp(t,wt(s,2,'연결해'),.4));sub('p_s3',.3+.7*ramp(t,c(3),.4))}
 
+// ---------- 4. mega: 투자 카드 → 지도 확대(광주·전남 → 광주 → 군공항) ----------
 const MO={cx:540,cy:548,s:78};
-const SITE=[[-3.2,-1.6],[-1.6,-3.0],[1.8,-3.0],[3.2,-1.4],[3.0,1.8],[1.4,3.0],[-1.8,3.0],[-3.2,1.4]];
 const FABS=[[-1.4,-1.3],[-1.4,1.3],[1.4,-1.3],[1.4,1.3]];
-function sMega(t,A,s){const c=i=>s.cues[i].start;
-  if(A>0){ctx.save();ctx.globalAlpha=A;const P=(x,y,z=0)=>isoP(MO,x,y,z),kg=ramp(t,s.start+.3,1.2);ctx.lineWidth=1;
+function megaCam(t,s){const t0=s.cues[4].start-.5,t1=wt(s,4,'군공항')-.1,t2=t1+1.8;
+  const K0=cam(126.95,35.0,3.2,760,560),K1=camW(GEO.G,22,760,540),K2=camW(GEO.air.c,150,760,560),K3=camW(GEO.air.c,172,760,560);
+  if(t<t1)return lerpCam(K0,K1,eio((t-t0)/(t1-t0)));if(t<t2)return lerpCam(K1,K2,eio((t-t1)/(t2-t1)));return lerpCam(K2,K3,(t-t2)/14)}
+function sMega(t,A,s){const c=i=>s.cues[i].start,tB=c(4)-.5,aA=A*(1-ramp(t,tB,.5)),bA=A*ramp(t,tB,.5);
+  const t800=wt(s,2,'팔백조'),t4=wt(s,2,'네'),tR=wt(s,3,'광주'),tAir=wt(s,4,'군공항'),t250=wt(s,5,'이백오십만'),t826=wt(s,5,'팔백이십육만'),tI=wt(s,7,'전력과');
+  if(aA>0){ctx.save();ctx.globalAlpha=aA;const P=(x,y,z=0)=>isoP(MO,x,y,z),kg=ramp(t,s.start+.3,1.2);ctx.lineWidth=1;
     for(let i=-19;i<=19;i++){const v=i*.2,a=.16*kg*(1-Math.abs(v)/4);ctx.strokeStyle=`rgba(127,200,255,${a})`;
       let[a0,a1]=[P(-3.8,v),P(3.8,v)];ctx.beginPath();ctx.moveTo(...a0);ctx.lineTo(...a1);ctx.stroke();[a0,a1]=[P(v,-3.8),P(v,3.8)];ctx.beginPath();ctx.moveTo(...a0);ctx.lineTo(...a1);ctx.stroke()}
-    const ks=eio((t-c(3))/1.2),sp=SITE.map(([x,y])=>P(x,y));
-    if(ks>0){ctx.globalAlpha=A*ks;poly([P(-3,-.24),P(3,-.24),P(3,.24),P(-3,.24)]);ctx.fillStyle='rgba(150,170,200,.22)';ctx.fill();
-      ctx.strokeStyle='rgba(230,240,255,.5)';ctx.lineWidth=2;ctx.setLineDash([10,12]);ctx.beginPath();ctx.moveTo(...P(-2.8,0));ctx.lineTo(...P(2.8,0));ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=A}
-    const kf=ramp(t,c(4),.8);if(kf>0){poly(sp);ctx.fillStyle=`rgba(255,200,100,${(.07+.04*Math.sin(t*2.5))*kf})`;ctx.fill()}
-    FABS.forEach(([x,y],i)=>{const k=eo((t-c(2)-.2-i*.35)/.7);if(k<=0)return;
+    const kgh=ramp(t,c(0)+.8,1)*(1-ramp(t,t4,.4));if(kgh>0){ctx.setLineDash([6,6]);FABS.forEach(([x,y])=>isoBox(MO,x,y,0,2.0,1.4,.95,{top:'rgba(127,227,255,.04)',left:'rgba(127,227,255,.03)',right:'rgba(127,227,255,.03)',stroke:`rgba(127,227,255,${.45*kgh})`}));ctx.setLineDash([])}
+    FABS.forEach(([x,y],i)=>{const k=eo((t-t4+.1-i*.25)/.6);if(k<=0)return;
       isoBox(MO,x,y,0,2.0,1.4,.95*k,{top:'#22427c',left:'#0f2147',right:'#16305f',stroke:'rgba(127,227,255,.85)'});
       if(k>=1){ctx.globalCompositeOperation='lighter';const[gx,gy]=P(x,y,.95);glow(gx,gy,6,'130,220,255',.55+.25*Math.sin(t*3+i));ctx.globalCompositeOperation='source-over'}});
-    if(ks>0){const per=[];for(let i=0;i<sp.length;i++){const a=sp[i],b=sp[(i+1)%sp.length];per.push([a,b,Math.hypot(b[0]-a[0],b[1]-a[1])])}
-      const tot=per.reduce((q,p)=>q+p[2],0);let rem=tot*ks;ctx.beginPath();ctx.moveTo(...sp[0]);
-      for(const[a,b,l]of per){if(rem<=0)break;const f=Math.min(1,rem/l);ctx.lineTo(a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f);rem-=l}
-      ctx.globalCompositeOperation='lighter';ctx.strokeStyle='rgba(255,200,100,.25)';ctx.lineWidth=10;ctx.stroke();
-      ctx.setLineDash([16,10]);ctx.lineDashOffset=-t*30;ctx.strokeStyle='rgba(255,215,130,.95)';ctx.lineWidth=3;ctx.stroke();ctx.setLineDash([]);ctx.globalCompositeOperation='source-over'}
-    const ki=ramp(t,c(6),.8);if(ki>0){ctx.globalAlpha=A*ki;
-      for(const[sy,col,tx,ty]of[[420,'255,215,122',-3.0,-.6],[700,'127,200,255',-2.4,2.2]]){const[ex,ey]=P(tx,ty);
-        ctx.beginPath();ctx.moveTo(0,sy);ctx.quadraticCurveTo(ex*.5,sy,ex,ey);ctx.strokeStyle=`rgba(${col},.85)`;ctx.lineWidth=3;ctx.setLineDash([12,10]);ctx.lineDashOffset=-t*60;ctx.stroke();ctx.setLineDash([]);
-        glow(ex,ey,5,col,.9)}ctx.globalAlpha=A}
     ctx.restore()}
-  show('m_eb',A*ramp(t,c(0)-.5,.6));const kt=ramp(t,c(0),.8);show('m_t',A*kt,0,(1-kt)*20);
-  const k1=ramp(t,c(1),.6),k2=ramp(t,c(2)+2.2,.6),k3=ramp(t,c(4),.6);
-  show('m_c1',A*k1,(1-k1)*70);show('m_c2',A*k2,(1-k2)*70);show('m_c3',A*k3,(1-k3)*70);
-  txt('m_n1',fmt(800*eio((t-c(2)-.2)/1.4)));txt('m_n3',fmt(826*eio((t-c(4)-.2)/1.4)));
-  const kp=ramp(t,c(3)+.3,.6);show('m_pin',A*kp,0,(1-kp)*-16);const ki=ramp(t,c(6),.7);show('m_inf',A*ki,0,(1-ki)*16)}
+  if(bA>0){ctx.save();ctx.globalAlpha=bA;const C=megaCam(t,s);
+    grid(C,1);land(C);borders(C,GEO.jn,.35,'127,227,255',1);
+    const kG=ramp(t,tB+.4,.6)*(1-ramp(t,tAir+1.2,.8));region(C,[GEO.gjP],kG);borders(C,GEO.gj,.6*ramp(t,tB+1.2,.6),'255,220,150',1.4);
+    ctx.setTransform(1,0,0,1,0,0);const gl=ramp(t,tB+1.6,.5)*(1-ramp(t,tAir+.6,.5));for(const m of GEO.gj)mapLabel(C,m.c,m.name,.85*gl,22);
+    const ka=eio((t-(tAir+.4))/1.2);
+    if(ka>0){const[ax,ay]=scr(C,GEO.air.c),kz=ramp(t,t250,.8);
+      if(kz>0){const rg=ctx.createRadialGradient(ax,ay,0,ax,ay,520);rg.addColorStop(0,`rgba(255,200,100,${(.09+.03*Math.sin(t*2.4))*kz})`);rg.addColorStop(1,'rgba(255,200,100,0)');ctx.fillStyle=rg;ctx.fillRect(0,0,W,H)}
+      camAt(C);const lw=1/C.z,r=GEO.air.ring,m=Math.max(2,Math.floor(r.length*ka));
+      if(ka>=1){ctx.save();ctx.clip(GEO.air.path);ctx.globalCompositeOperation='lighter';ctx.fillStyle=`rgba(255,200,100,${.10+.03*Math.sin(t*2.5)})`;ctx.fill(GEO.air.path);ctx.globalCompositeOperation='source-over';
+        ctx.fillStyle='rgba(255,225,160,.35)';const b=GEO.air.c;for(let gx=-2.6;gx<=2.6;gx+=.2)for(let gy=-2.2;gy<=2.2;gy+=.2)ctx.fillRect(b[0]+gx-.012,b[1]+gy-.012,.024,.024);ctx.restore()}
+      ctx.beginPath();ctx.moveTo(r[0][0],r[0][1]);for(let i=1;i<m;i++)ctx.lineTo(r[i][0],r[i][1]);if(ka>=1)ctx.closePath();
+      ctx.globalCompositeOperation='lighter';ctx.strokeStyle='rgba(255,200,100,.3)';ctx.lineWidth=12*lw;ctx.stroke();
+      ctx.strokeStyle='rgba(255,225,150,.95)';ctx.lineWidth=3*lw;ctx.setLineDash([14*lw,9*lw]);ctx.lineDashOffset=-t*30*lw;ctx.stroke();ctx.setLineDash([]);ctx.globalCompositeOperation='source-over';
+      ctx.setTransform(1,0,0,1,0,0)}
+    const ki=ramp(t,tI,.8);if(ki>0){const[ax,ay]=scr(C,GEO.air.c);ctx.globalAlpha=bA*ki;
+      for(const[sx,sy,col]of[[0,260,'255,215,122'],[0,960,'127,200,255']]){const ex=ax-200,ey=ay+(sy<500?-120:140);
+        ctx.beginPath();ctx.moveTo(sx,sy);ctx.quadraticCurveTo((sx+ex)/2,sy,ex,ey);ctx.strokeStyle=`rgba(${col},.9)`;ctx.lineWidth=4;ctx.setLineDash([14,10]);ctx.lineDashOffset=-t*70;ctx.stroke();ctx.setLineDash([]);
+        ctx.globalCompositeOperation='lighter';glow(ex,ey,6,col,.95);ctx.globalCompositeOperation='source-over'}ctx.globalAlpha=bA}
+    const rg2=ctx.createLinearGradient(1060,0,1320,0);rg2.addColorStop(0,'rgba(2,5,13,0)');rg2.addColorStop(1,'rgba(2,5,13,.72)');ctx.fillStyle=rg2;ctx.fillRect(1060,0,W-1060,H);
+    const bt=ctx.createLinearGradient(0,760,0,H);bt.addColorStop(0,'rgba(2,5,13,0)');bt.addColorStop(1,'rgba(2,5,13,.75)');ctx.fillStyle=bt;ctx.fillRect(0,760,W,H-760);
+    ctx.restore();mapVis=Math.max(mapVis,bA);
+    const[px,py]=scr(C,GEO.air.top),kp=ramp(t,tAir+1.0,.5);pin('m_air',px,py-18,bA*kp,.9+.1*kp)}
+  else pin('m_air',0,0,0);
+  show('m_eb',aA*ramp(t,c(0)-.5,.6));const kt=ramp(t,c(0),.8);show('m_t',aA*kt,0,(1-kt)*20);
+  const[o1,k1]=pop(t,t800-.05),[o2,k2]=pop(t,t4-.05),[o3,k3]=pop(t,tR-.05);
+  show('m_c1',aA*o1,(1-o1)*50,0,.94+.06*k1);show('m_c2',aA*o2,(1-o2)*50,0,.94+.06*k2);show('m_c3',aA*o3,(1-o3)*50,0,.94+.06*k3);
+  const[o4,k4]=pop(t,t250-.05);show('m_area',bA*o4,(1-o4)*50,0,.94+.06*k4);sub('m_area2',ramp(t,t826-.05,.3));
+  const[o5,k5]=pop(t,c(6));show('m_badge',bA*o5,(1-o5)*50,0,.94+.06*k5);
+  const ki2=ramp(t,tI,.6);show('m_inf',bA*ki2,0,(1-ki2)*16)}
 
-function sAir(t,A,s){const c=i=>s.cues[i].start,vp=VP(),kc=eio((t-c(2))/1.5);
+// ---------- 5. airbase ----------
+function sAir(t,A,s){const c=i=>s.cues[i].start,vp=VP(),kc=eio((t-c(2))/1.5),t64=wt(s,0,'천구백'),t62=wt(s,0,'육십이');
   if(A>0){ctx.save();ctx.globalAlpha=A;
     const g=ctx.createLinearGradient(0,vp.y,0,H);g.addColorStop(0,'rgba(10,20,40,0)');g.addColorStop(1,'rgba(12,28,60,.7)');ctx.fillStyle=g;ctx.fillRect(0,vp.y,W,H-vp.y);
     const hz=ctx.createLinearGradient(0,vp.y-40,0,vp.y+40);hz.addColorStop(0,'rgba(80,160,255,0)');hz.addColorStop(.5,`rgba(${kc>.5?'120,210,255':'150,170,200'},.35)`);hz.addColorStop(1,'rgba(80,160,255,0)');ctx.fillStyle=hz;ctx.fillRect(0,vp.y-40,W,80);
@@ -282,28 +396,29 @@ function sAir(t,A,s){const c=i=>s.cues[i].start,vp=VP(),kc=eio((t-c(2))/1.5);
     if(t>c(2))for(const tr of TA){const d=(t-c(2)-tr.delay*.8)*tr.speed;drawTrace(tr,d,.9);pulse(tr,t,d,2.5)}
     if(t>c(3))glow(vp.x,vp.y,60,'255,220,150',.7*Math.exp(-(t-c(3))*1.5));
     ctx.restore()}
-  const yr=1-ramp(t,c(2)-.3,.5);show('a_year',A*ramp(t,c(0)-.2,.7)*yr);txt('a_year',String(Math.round(1964+62*eio((t-(c(0)+2.6))/1.4))));
-  show('a_l1',A*ramp(t,c(0),.6)*(1-ramp(t,c(0)+2.4,.4)));show('a_l2',A*ramp(t,c(0)+3.8,.6)*yr);
+  const yr=1-ramp(t,c(2)-.3,.5),[o1,k1]=pop(t,t64-.05),sw=ramp(t,t62-.1,.35),[o2,k2]=pop(t,t62-.05);
+  show('a_year',A*o1*(1-sw)*yr,0,0,.9+.1*k1);show('a_year2',A*o2*yr,0,0,.9+.1*k2);
+  show('a_l1',A*ramp(t,t64+.2,.5)*(1-sw));show('a_l2',A*ramp(t,t62,.5)*yr);
   show('a_eb',A*ramp(t,c(2),.6));const ka=ramp(t,c(3)-.1,.8);show('a_t',A*ka,0,(1-ka)*30)}
 
-function sTalent(t,A,s){const c=i=>s.cues[i].start;
-  if(A>0){ctx.save();ctx.globalAlpha=A;const lit=140*eio((t-c(3)-.2)/1.6);
+// ---------- 6. talent ----------
+function sTalent(t,A,s){const c=i=>s.cues[i].start,tn=wt(s,3,'천사백');
+  if(A>0){ctx.save();ctx.globalAlpha=A;const lit=140*eio((t-tn)/1.4);
     for(let i=0;i<140;i++){const col=i%20,row=Math.floor(i/20),x=1012+col*38,y=322+row*52,ap=ramp(t,c(0)+(col+row)*.03,.5);if(ap<=0)continue;
-      const on=i<lit;ctx.globalAlpha=A*ap;
-      ctx.beginPath();ctx.arc(x,y,7,0,7);ctx.moveTo(x-12,y+26);ctx.quadraticCurveTo(x,y+4,x+12,y+26);ctx.closePath();
-      if(on){ctx.fillStyle='rgba(255,212,125,.95)';ctx.fill()}else{ctx.strokeStyle='rgba(127,227,255,.35)';ctx.lineWidth=1.5;ctx.stroke()}}
-    ctx.globalAlpha=A;if(lit>0&&lit<140){const i=Math.floor(lit),x=1012+(i%20)*38,y=322+Math.floor(i/20)*52;ctx.globalCompositeOperation='lighter';glow(x,y+10,8,'255,220,150',.8)}
+      ctx.globalAlpha=A*ap;ctx.beginPath();ctx.arc(x,y,7,0,7);ctx.moveTo(x-12,y+26);ctx.quadraticCurveTo(x,y+4,x+12,y+26);ctx.closePath();
+      if(i<lit){ctx.fillStyle='rgba(255,212,125,.95)';ctx.fill()}else{ctx.strokeStyle='rgba(127,227,255,.35)';ctx.lineWidth=1.5;ctx.stroke()}}
     ctx.restore()}
   show('t_eb',A*ramp(t,s.start+.3,.6));const k0=ramp(t,c(0),.8);show('t_t',A*k0,0,(1-k0)*24);
-  const kc=ramp(t,c(1),.7);show('t_card',A*kc,(1-kc)*-60);
-  const kn=ramp(t,c(3)-.1,.6);show('t_cnt',A*kn,0,(1-kn)*20);txt('t_n',fmt(1400*eio((t-c(3)-.2)/1.6)));
-  show('t_cl',A*ramp(t,c(3)+.6,.6));show('t_unit',A*ramp(t,c(3)+1.8,.6));show('t_unis',A*ramp(t,c(4)-.1,.3));
-  ['t_u1','t_u2','t_u3'].forEach((id,i)=>{const k=ramp(t,c(4)+i*.45,.5);sub(id,k,(1-k)*16)})}
+  const kc=ramp(t,wt(s,1,'광주과학기술원'),.7);show('t_card',A*kc,(1-kc)*-60);
+  const[o,k]=pop(t,tn-.05);show('t_cnt',A*o,0,0,.9+.1*k);
+  show('t_cl',A*ramp(t,tn+.7,.6));show('t_unit',A*ramp(t,tn+1.6,.6));show('t_unis',A*ramp(t,c(4)-.1,.3));
+  [['t_u1','전남대'],['t_u2','조선대'],['t_u3','지역']].forEach(([id,w])=>{const k=ramp(t,wt(s,4,w)-.05,.45);sub(id,k,(1-k)*16)})}
 
+// ---------- 7. aicity: AI × 반도체 → 통합특별시 지도 ----------
 const NN=(()=>{const L=[4,6,6,3],xs=[250,410,570,730],o=[];L.forEach((n,li)=>{for(let j=0;j<n;j++)o.push({l:li,x:xs[li],y:520+(j-(n-1)/2)*82})});return o})();
 const NNE=(()=>{const r=rng(77),o=[];for(let q=0;q<30;q++){const li=Math.floor(r()*3),as=NN.filter(n=>n.l===li),bs=NN.filter(n=>n.l===li+1);o.push([as[Math.floor(r()*as.length)],bs[Math.floor(r()*bs.length)],r()])}return o})();
-const RING=(()=>{const r=rng(100),o=[];for(let i=0;i<27;i++){const a=-Math.PI/2+i/27*Math.PI*2;o.push({tx:960+Math.cos(a)*230,ty:480+Math.sin(a)*230,sx:r()*W,sy:80+r()*H*.75,gold:i<5})}return o})();
-function sAI(t,A,s){const c=i=>s.cues[i].start,aA=A*(1-ramp(t,c(2)-.5,.6)),bA=A*ramp(t,c(2)-.2,.6);
+function sAI(t,A,s){const c=i=>s.cues[i].start,tB=c(2)-.5,aA=A*(1-ramp(t,tB,.6)),bA=A*ramp(t,tB,.6);
+  const tPop=wt(s,2,'삼백이십만'),tCity=wt(s,3,'전남광주');
   if(aA>0){ctx.save();ctx.globalAlpha=aA;const kn=ramp(t,s.start+.6,1.2);ctx.lineWidth=1;
     for(const a of NN)for(const b of NN)if(b.l===a.l+1){ctx.strokeStyle=`rgba(127,227,255,${.14*kn})`;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
     ctx.globalCompositeOperation='lighter';
@@ -315,16 +430,32 @@ function sAI(t,A,s){const c=i=>s.cues[i].start,aA=A*(1-ramp(t,c(2)-.5,.6)),bA=A*
       ctx.beginPath();ctx.moveTo(sx,sy);for(let u=0;u<=kb;u+=.02)ctx.lineTo(...B(u));ctx.strokeStyle='rgba(255,210,120,.8)';ctx.lineWidth=3;ctx.stroke();
       if(kb>=1){ctx.globalCompositeOperation='lighter';const[x,y]=B((t*.8+i*.33)%1);glow(x,y,4,'255,220,150',.95);ctx.globalCompositeOperation='source-over'}});
     ctx.restore()}
-  if(bA>0){ctx.save();ctx.globalAlpha=bA;const kr=eio((t-c(2))/1.8),kl=eio((t-c(2)-1.6)/1);
-    if(kl>0){glow(960,480,120,'80,160,255',.16*kl);ctx.strokeStyle='rgba(255,215,140,.7)';ctx.lineWidth=3;ctx.beginPath();ctx.arc(960,480,230,-Math.PI/2,-Math.PI/2+Math.PI*2*kl);ctx.stroke()}
-    for(const d of RING){const x=d.sx+(d.tx-d.sx)*kr,y=d.sy+(d.ty-d.sy)*kr,col=d.gold?'255,210,120':'130,220,255';
-      ctx.globalCompositeOperation='lighter';glow(x,y,6,col,.8);ctx.globalCompositeOperation='source-over';ctx.fillStyle=d.gold?'#ffe2a0':'#cdefff';ctx.beginPath();ctx.arc(x,y,7,0,7);ctx.fill()}
-    ctx.restore()}
+  if(bA>0){ctx.save();ctx.globalAlpha=bA;
+    const C=lerpCam(cam(126.75,34.78,3.3,700,545),cam(126.75,34.78,3.9,700,545),(t-tB)/10);
+    grid(C,1);land(C,.9);
+    const merge=ramp(t,tCity,1.0);
+    // 광주 5개 구 → 금색, 전남 22개 시·군 → 하늘색으로 차례로 켜짐
+    GEO.gj.forEach((m,i)=>region(C,[m],ramp(t,tB+.8+i*.12,.5)*(1-.55*merge),'255,200,100',.16));
+    GEO.jn.forEach(m=>region(C,[m],ramp(t,tB+1.5+m.dn*2.0,.5)*(1-.55*merge),'110,200,255',.14));
+    if(merge>0){camAt(C);const lw=1/C.z,both=[GEO.jnP,GEO.gjP];
+      // 외곽선만 남기기: 선을 먼저 굵게 그리고 두 지역을 채워 안쪽(광주-전남 경계)을 덮음
+      ctx.globalCompositeOperation='lighter';ctx.strokeStyle=`rgba(255,210,120,${.32*merge})`;ctx.lineWidth=10*lw;both.forEach(p=>ctx.stroke(p.path));
+      ctx.globalCompositeOperation='source-over';ctx.strokeStyle=`rgba(255,222,150,${.95*merge})`;ctx.lineWidth=5*lw;both.forEach(p=>ctx.stroke(p.path));
+      ctx.fillStyle=`rgba(13,30,62,${.94*merge})`;both.forEach(p=>ctx.fill(p.path,'evenodd'));
+      ctx.globalCompositeOperation='lighter';ctx.fillStyle=`rgba(255,200,100,${.10*merge})`;both.forEach(p=>ctx.fill(p.path,'evenodd'));ctx.globalCompositeOperation='source-over';
+      borders(C,GEO.muni,.26*merge,'255,230,180',1)}
+    ctx.setTransform(1,0,0,1,0,0);
+    const rg=ctx.createLinearGradient(1120,0,1300,0);rg.addColorStop(0,'rgba(2,5,13,0)');rg.addColorStop(1,'rgba(2,5,13,.7)');ctx.fillStyle=rg;ctx.fillRect(1120,0,W-1120,H);
+    ctx.restore();mapVis=Math.max(mapVis,bA);
+    const[gx,gy]=scr(C,GEO.G),[jx,jy]=scrLL(C,127.15,34.62);
+    pin('c_mgj',gx,gy-30,bA*ramp(t,tB+1.0,.5)*(1-ramp(t,tCity+.6,.5)));pin('c_mjn',jx,jy,bA*ramp(t,tB+2.4,.5)*(1-ramp(t,tCity+.6,.5)))}
+  else{pin('c_mgj',0,0,0);pin('c_mjn',0,0,0)}
   show('c_eb',aA*ramp(t,s.start+.3,.6));const k0=ramp(t,c(0),.8);show('c_t',aA*k0,0,(1-k0)*24);
   show('c_pill',aA*ramp(t,c(1)+.3,.6));show('c_ln',aA*ramp(t,c(0)+.8,.6));show('c_lc',aA*ramp(t,c(0)+1.2,.6));
-  const kp=ramp(t,c(2)+1.2,.7);show('c_pop',bA*kp);show('c_big',bA*kp,0,(1-kp)*16);txt('c_n',fmt(320*eio((t-c(2)-1.2)/1.4)));
-  const k3=ramp(t,c(3),.7);show('c_l1',bA*k3,0,(1-k3)*20);show('c_l2',bA*ramp(t,c(3)+.9,.7))}
+  show('c_pop',bA*ramp(t,wt(s,2,'인구')-.05,.4));const[o,k]=pop(t,tPop-.05);show('c_big',bA*o,0,0,.92+.08*k);
+  show('c_l0',bA*ramp(t,tCity-.1,.5));const[o2,k2]=pop(t,tCity-.05);show('c_l1',bA*o2,0,0,.94+.06*k2);show('c_l2',bA*ramp(t,tCity+.9,.6))}
 
+// ---------- 8. vision ----------
 function sVision(t,A,s){const c=i=>s.cues[i].start;
   if(A>0){ctx.save();ctx.globalAlpha=A;drawCity(t,eo((t-s.start+.3)/1.8),clamp(.2+.8*(t-s.start)/(s.end-s.start)));
     if(t>c(0)-.3){ctx.globalCompositeOperation='lighter';for(let i=0;i<46;i++){const r=rng(500+i),st=c(0)-.3+r()*3.6,k=eio((t-st)/1.8);if(k<=0||k>=1)continue;
@@ -333,6 +464,7 @@ function sVision(t,A,s){const c=i=>s.cues[i].start;
   show('v_p',A*ramp(t,c(1)-.1,.3));[['v_p1',c(1)],['v_p2',c(2)],['v_p3',c(3)]].forEach(([id,st])=>{const k=eback((t-st)/.5);sub(id,clamp(k*2),0,.7+.3*k)});
   const k4=ramp(t,c(4),.8);show('v_t',A*k4,0,(1-k4)*30);const k5=ramp(t,c(5),.8);show('v_s',A*k5,0,(1-k5)*20)}
 
+// ---------- 9. end ----------
 function sEnd(t,A,s){const c=i=>s.cues[i].start;
   if(A>0){ctx.save();ctx.globalAlpha=A;drawCity(t,1,1,.6);ctx.fillStyle='rgba(2,5,13,.64)';ctx.fillRect(0,0,W,H);
     const bt=ctx.createLinearGradient(0,940,0,H);bt.addColorStop(0,'rgba(2,5,13,0)');bt.addColorStop(1,'rgba(2,5,13,.85)');ctx.fillStyle=bt;ctx.fillRect(0,940,W,140);
@@ -343,18 +475,20 @@ function sEnd(t,A,s){const c=i=>s.cues[i].start;
       for(let i=0;i<4;i++){const p=-S/2+S*(i+.5)/4;for(const[x0,y0,x1,y1]of[[p,-S/2,p,-S/2-18],[p,S/2,p,S/2+18],[-S/2,p,-S/2-18,p],[S/2,p,S/2+18,p]]){ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(x1,y1);ctx.stroke()}}
       ctx.globalCompositeOperation='lighter';glow(0,0,15+2*Math.sin(t*3),'255,215,140',.95);ctx.restore()}
     ctx.restore()}
-  show('e_t1',A*ramp(t,c(0)-.2,.7),0,(1-ramp(t,c(0)-.2,.7))*20);const k2=ramp(t,c(0)+1.2,.9);show('e_t2',A*k2,0,0,1.06-.06*k2);
+  show('e_t1',A*ramp(t,c(0)-.2,.7),0,(1-ramp(t,c(0)-.2,.7))*20);const k2=ramp(t,wt(s,0,'반도체')-.1,.9);show('e_t2',A*k2,0,0,1.06-.06*k2);
   show('e_src',A*ramp(t,c(0)+2.6,.8))}
 
 // ---------- timeline ----------
 let S=[],CAPS=[],TOTAL=0;
 const MAP={intro:sIntro,life:sLife,packaging:sPack,mega:sMega,airbase:sAir,talent:sTalent,aicity:sAI,vision:sVision,end:sEnd};
 function sa(i,t){const s=S[i],fi=i===0?1:clamp((t-(s.start-.35))/.7),fo=i===S.length-1?1:clamp(((s.end+.35)-t)/.7);return fi*fo}
-window.init=tl=>{S=tl.scenes;CAPS=tl.captions;TOTAL=tl.total;return document.body.textContent+CAPS.map(c=>c.text).join('')};
-window.renderAt=t=>{
-  bg(t);S.forEach((s,i)=>MAP[s.id](t,sa(i,t),s));
+window.init=(tl,geo)=>{S=tl.scenes;CAPS=tl.captions;TOTAL=tl.total;prepGeo(geo);
+  return document.body.textContent+CAPS.map(c=>c.text).join('')+GEO.gj.map(m=>m.name).join('')};
+window.renderAt=t=>{mapVis=0;
+  bg(t);S.forEach((s,i)=>MAP[s.id](t,sa(i,t),s));ctx.setTransform(1,0,0,1,0,0);
+  show('mapsrc',mapVis);
   const endStart=S[S.length-1].start,cp=CAPS.find(x=>x.start<endStart&&t>=x.start-.1&&t<=x.end+.3);
-  if(cp){txt('capt',cp.text);show('cap',win(t,cp.start-.1,cp.end+.3,.12))}else show('cap',0);
+  if(cp){const e=el('capt');if(e.textContent!==cp.text)e.textContent=cp.text;show('cap',win(t,cp.start-.1,cp.end+.3,.12))}else show('cap',0);
   const f=clamp(t/.8)*clamp((TOTAL-t)/1.4);document.body.style.filter=f<1?`brightness(${f})`:'none'};
 </script>
 </body></html>

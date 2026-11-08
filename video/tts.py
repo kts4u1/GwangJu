@@ -2,24 +2,27 @@
 
 script.json의 각 문장을 edge-tts(한국어 신경망 음성)로 합성하고,
 문장 사이 간격을 정리해 하나의 나레이션 트랙(build/narration.wav),
-장면·자막 타이밍(build/timeline.json), 자막 파일(build/subtitles.srt)을 만듭니다.
+장면·자막·단어 타이밍(build/timeline.json), 자막 파일(build/subtitles.srt)을 만듭니다.
+단어 타이밍은 화면의 숫자를 나레이션이 그 숫자를 말하는 순간에 맞춰 띄우는 데 씁니다.
 """
-import asyncio, json, os, subprocess, sys
+import asyncio, hashlib, json, os, subprocess, sys, wave
 import numpy as np
 import edge_tts
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 BUILD = os.path.join(HERE, "build")
 SR = 48000
+FRAME = 0.01        # 무음 분석 단위 (초)
 
 # 타이밍 (초)
-LEAD = 3.0          # 첫 장면: 음악·빛 인트로 후 첫 나레이션
+LEAD = 6.0          # 첫 장면: 지도(대한민국 → 광주) 확대 후 첫 나레이션
 SCENE_PRE = 1.3     # 장면 전환 후 첫 문장까지
-SCENE_POST = 1.7    # 장면 마지막 문장 끝 ~ 다음 장면 시작
-GAP_SENT = 0.65     # 문장 끝(.) 다음 간격
+SCENE_POST = 1.5    # 장면 마지막 문장 끝 ~ 다음 장면 시작
+GAP_SENT = 0.55     # 문장 끝(.) 다음 간격
 GAP_CLAUSE = 0.15   # 쉼표·이어지는 구절 다음 간격
-END_POST = 6.5      # 엔딩 문장 후 영상 끝까지
+END_POST = 6.0      # 엔딩 문장 후 영상 끝까지
 MAX_PAUSE = 0.38    # 문장 안 쉼(쉼표 등) 최대 길이
+EXTRA_PRE = {"mega": 0.0}   # 장면별 추가 여유가 필요하면 지정
 
 
 def decode(path):
@@ -28,40 +31,51 @@ def decode(path):
     return np.frombuffer(raw, "<i2").astype(np.float32) / 32768
 
 
-def tighten(x, thr_db=-42, frame=0.01):
-    """앞뒤 무음 제거, 문장 안의 긴 쉼은 MAX_PAUSE로 줄임."""
-    n = int(SR * frame)
+def tighten(x, thr_db=-42):
+    """앞뒤 무음 제거, 문장 안의 긴 쉼은 MAX_PAUSE로 줄임.
+    원래 시각 → 새 시각 변환에 쓰도록 남긴 프레임 목록도 돌려줍니다."""
+    n = int(SR * FRAME)
     frames = len(x) // n
     rms = np.sqrt(np.mean(x[:frames * n].reshape(frames, n) ** 2, axis=1) + 1e-12)
     loud = 20 * np.log10(rms) > thr_db
     idx = np.flatnonzero(loud)
     if len(idx) == 0:
-        return x
+        return x, np.arange(frames)
     first, last = idx[0], idx[-1]
-    out, run = [], 0
-    keep = int(MAX_PAUSE / frame)
+    kept, run = [], 0
+    keep = int(MAX_PAUSE / FRAME)
     for f in range(max(0, first - 3), min(frames, last + 6)):
-        if loud[f]:
-            run = 0
-        else:
-            run += 1
-            if run > keep:
-                continue
-        out.append(x[f * n:(f + 1) * n])
-    y = np.concatenate(out)
+        run = 0 if loud[f] else run + 1
+        if run <= keep:
+            kept.append(f)
+    kept = np.array(kept)
+    y = np.concatenate([x[f * n:(f + 1) * n] for f in kept])
     fade = int(SR * 0.008)
     y[:fade] *= np.linspace(0, 1, fade)
     y[-fade:] *= np.linspace(1, 0, fade)
-    return y
+    return y, kept
 
 
-async def synth(text, voice, rate, path):
-    if os.path.exists(path) and os.path.getsize(path) > 0:
-        return
+def remap(t, kept):
+    """합성 원본 기준 시각 t(초)를 정리된 클립 기준 시각으로 바꿉니다."""
+    i = np.searchsorted(kept, int(t / FRAME))
+    return float(min(i, len(kept) - 1)) * FRAME
+
+
+async def synth(text, voice, rate, mp3, words_path):
+    if os.path.exists(mp3) and os.path.getsize(mp3) > 0 and os.path.exists(words_path):
+        return json.load(open(words_path, encoding="utf-8"))
     for attempt in range(4):
         try:
-            await edge_tts.Communicate(text, voice, rate=rate).save(path)
-            return
+            audio, words = bytearray(), []
+            async for ch in edge_tts.Communicate(text, voice, rate=rate, boundary="WordBoundary").stream():
+                if ch["type"] == "audio":
+                    audio += ch["data"]
+                elif ch["type"] == "WordBoundary":
+                    words.append({"t": ch["offset"] / 1e7, "d": ch["duration"] / 1e7, "w": ch["text"]})
+            open(mp3, "wb").write(audio)
+            json.dump(words, open(words_path, "w", encoding="utf-8"), ensure_ascii=False)
+            return words
         except Exception as e:  # 네트워크 오류 시 재시도
             print("  retry", attempt + 1, e, file=sys.stderr)
             await asyncio.sleep(2 ** attempt)
@@ -78,24 +92,28 @@ async def main():
     os.makedirs(os.path.join(BUILD, "tts"), exist_ok=True)
     voice, rate = spec["voice"], spec.get("rate", "+0%")
 
-    clips, k = [], 0
+    clips = []
     for sc in spec["scenes"]:
         for ln in sc["lines"]:
-            k += 1
-            mp3 = os.path.join(BUILD, "tts", f"{k:02}_{voice}_{rate}.mp3".replace("+", "p").replace("%", ""))
-            await synth(ln["say"], voice, rate, mp3)
-            clips.append(tighten(decode(mp3)))
+            key = hashlib.sha1(f"{voice}|{rate}|{ln['say']}".encode()).hexdigest()[:16]
+            base = os.path.join(BUILD, "tts", key)
+            words = await synth(ln["say"], voice, rate, base + ".mp3", base + ".words.json")
+            y, kept = tighten(decode(base + ".mp3"))
+            clips.append((y, [{"t": remap(w["t"], kept), "w": w["w"]} for w in words]))
 
     t, k, scenes, captions = LEAD, 0, [], []
     for si, sc in enumerate(spec["scenes"]):
         start = 0.0 if si == 0 else t
         if si > 0:
-            t += SCENE_PRE
+            t += SCENE_PRE + EXTRA_PRE.get(sc["id"], 0)
         cues = []
         for li, ln in enumerate(sc["lines"]):
-            d = len(clips[k]) / SR
-            cues.append({"start": round(t, 3), "end": round(t + d, 3)})
-            captions.append({"start": round(t, 3), "end": round(t + d, 3), "text": ln.get("cap", ln["say"]), "clip": k})
+            y, words = clips[k]
+            d = len(y) / SR
+            cue = {"start": round(t, 3), "end": round(t + d, 3),
+                   "words": [{"t": round(t + w["t"], 3), "w": w["w"]} for w in words]}
+            cues.append(cue)
+            captions.append({"start": cue["start"], "end": cue["end"], "text": ln.get("cap", ln["say"]), "clip": k})
             t += d
             if li < len(sc["lines"]) - 1:
                 t += GAP_SENT if ln["say"].rstrip().endswith((".", "?", "!")) else GAP_CLAUSE
@@ -107,10 +125,10 @@ async def main():
     track = np.zeros(int(SR * total) + SR, np.float32)
     for c in captions:
         a = int(c["start"] * SR)
-        track[a:a + len(clips[c["clip"]])] += clips[c["clip"]]
+        y = clips[c["clip"]][0]
+        track[a:a + len(y)] += y
     track = track[:int(SR * total)]
     track = track / max(1e-6, np.abs(track).max()) * 0.89
-    import wave
     with wave.open(os.path.join(BUILD, "narration.wav"), "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
         w.writeframes((track * 32767).astype("<i2").tobytes())
